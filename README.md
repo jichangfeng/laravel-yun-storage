@@ -85,6 +85,7 @@ return [
             'accessKeyId' => env('YUN_STORAGE_COS_ACCESS_KEY_ID', ''),
             'accessKeySecret' => env('YUN_STORAGE_COS_ACCESS_KEY_SECRET', ''),
             'region' => env('YUN_STORAGE_COS_REGION', ''),
+            'schema' => env('YUN_STORAGE_COS_SCHEMA', 'http'),
             'appid' => env('YUN_STORAGE_COS_APPID', ''),
         ]
     ]
