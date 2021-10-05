@@ -150,6 +150,12 @@ try {
     //Lists the bucket's object keys
     \YunStorage\Laravel\YunStorageFacade::listObjectKeys($bucket, $prefix);
     //
+    //Uploads a local file
+    \YunStorage\Laravel\YunStorageFacade::uploadFile($bucket, $object, $localfile);
+    //
+    //Downloads to local file
+    \YunStorage\Laravel\YunStorageFacade::downloadFile($bucket, $object, $localfile);
+    //
     // Gets the storage client, return the actual storage object
     \YunStorage\Laravel\YunStorageFacade::adapter()->client();
 } catch (\Exception $e) {
@@ -168,6 +174,8 @@ try {
     $content = '{"type":"text", "data":{"msg":"some message"}}';
     $content2 = '{"type":"text", "data":{"msg":"other message"}}';
     $prefix = 'aa-bb/cc-dd';
+    $object3 = 'aa-bb/cc-dd/2021-09-26/ee-ff-3.text';
+    $localfile = __FILE__;
     echo 'createBucket: ' . PHP_EOL;
     print_r(\YunStorage\Laravel\YunStorageFacade::createBucket($bucket));
     echo PHP_EOL;
@@ -203,6 +211,15 @@ try {
     echo PHP_EOL;
     echo 'deleteObjects: ' . PHP_EOL;
     print_r(\YunStorage\Laravel\YunStorageFacade::deleteObjects($bucket, [$object, $object2]));
+    echo PHP_EOL;
+    echo 'uploadFile3: ' . PHP_EOL;
+    print_r(\YunStorage\Laravel\YunStorageFacade::uploadFile($bucket, $object3, $localfile));
+    echo PHP_EOL;
+    echo 'downloadFile3: ' . PHP_EOL;
+    print_r(\YunStorage\Laravel\YunStorageFacade::downloadFile($bucket, $object3, $localfile . '.download'));
+    echo PHP_EOL;
+    echo 'deleteFile3: ' . PHP_EOL;
+    print_r(\YunStorage\Laravel\YunStorageFacade::deleteObject($bucket, $object3));
     echo PHP_EOL;
     echo 'deleteBucket: ' . PHP_EOL;
     print_r(\YunStorage\Laravel\YunStorageFacade::deleteBucket($bucket));
