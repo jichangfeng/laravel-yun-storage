@@ -11,6 +11,13 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 class YunStorageServiceProvider extends ServiceProvider implements DeferrableProvider {
 
     /**
+     * Defer
+     * 
+     * @var bool 
+     */
+    protected $defer = true;
+
+    /**
      * Boot the application services.
      *
      * @return void
